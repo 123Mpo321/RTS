@@ -1,0 +1,4 @@
+Alpha V0.0.1
+	- added level rendering and panning
+Alpha V0.0.2
+	-
