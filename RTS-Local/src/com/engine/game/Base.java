@@ -14,7 +14,7 @@ import com.engine.game.input.Input;
 import com.engine.game.input.InputManager;
 import com.engine.level.Level;
 import com.engine.game.menu.Menu;
-//TEST
+
 public class Base extends Canvas implements Runnable{
 	
 	private static final long serialVersionUID = 1L;
