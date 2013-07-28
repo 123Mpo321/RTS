@@ -1,4 +1,0 @@
-RTS
-===
-
-Building an RTS
