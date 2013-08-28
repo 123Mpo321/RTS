@@ -20,7 +20,7 @@ public class Base extends Canvas implements Runnable{
 	private static final long serialVersionUID = 1L;
 	
 	private static boolean debug = true;
-	private static boolean windowed = false;
+	private static boolean windowed = true;
 	
 	public static boolean running = false;
 	public static int width = 1024;
@@ -43,7 +43,7 @@ public class Base extends Canvas implements Runnable{
 	
 	public Base(){
 		state = 1;
-		level = new Level(0, 0, "Temp", "Testing.txt");
+		level = new Level("Temp", "Testing.txt");
 		menu = new Menu(new Image("bg.png"));
 		Dimension size = new Dimension(width, height);
 		setPreferredSize(size);
@@ -122,7 +122,6 @@ public class Base extends Canvas implements Runnable{
 		Graphics g = bs.getDrawGraphics();
 		windowWidth = getWidth();
 		windowHeight = getHeight();
-		System.out.println(windowWidth + " | " + windowHeight);
 		g.drawImage(image, 0, 0, windowWidth, windowHeight, null);
 		g.dispose();
 		bs.show();

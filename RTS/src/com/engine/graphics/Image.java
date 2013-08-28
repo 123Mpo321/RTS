@@ -9,7 +9,8 @@ public class Image{
 	
 	private String path;
 	public int[] pixels;
-	int width, height;
+	public int width;
+	public int height;
 	
 	public Image(String path){
 		this.path = path;
@@ -27,4 +28,18 @@ public class Image{
 			e.printStackTrace();
 		}
 	}
+	
+	public void crop(int xStart, int yStart, int xStop, int yStop){
+		try{
+			pixels = new int[(xStop - xStart) * (yStop - yStart)];
+			BufferedImage img = ImageIO.read(new File(path));
+			width = img.getWidth();
+			height = img.getHeight();
+			pixels = new int[height * width];
+			img.getRGB(xStart, yStart, xStop - xStart, yStop - yStart, pixels, 0, width);
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+	}
+	
 }
