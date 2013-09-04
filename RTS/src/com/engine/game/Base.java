@@ -13,6 +13,8 @@ import com.engine.graphics.Render;
 import com.engine.game.input.Input;
 import com.engine.game.input.InputManager;
 import com.engine.level.Level;
+import com.engine.units.TestUnit;
+import com.engine.units.Unit;
 import com.engine.game.menu.Menu;
 
 public class Base extends Canvas implements Runnable{
@@ -38,6 +40,8 @@ public class Base extends Canvas implements Runnable{
 	public static Input in = new Input();
 	private JFrame frame = new JFrame();
 	
+	private Unit u;
+	
 	BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 	private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
 	
@@ -51,6 +55,8 @@ public class Base extends Canvas implements Runnable{
 		addKeyListener(in);
 		addMouseListener(in);
 		addMouseMotionListener(in);
+		
+		u = new TestUnit("TestUnit", 128, 128);
 		
 		render = new Render(height, width);
 	}
@@ -102,7 +108,7 @@ public class Base extends Canvas implements Runnable{
 	}
 	
 	private void update(){
-		
+		u.update();
 	}
 	
 	private void render(){
@@ -114,7 +120,10 @@ public class Base extends Canvas implements Runnable{
 		
 		render.clear();
 		if(state == 0) render.render(menu);
-		if(state == 1) render.render(level);
+		if(state == 1){
+			render.render(level);
+			render.renderUnit(u);
+		}
 		
 		for(int i = 0; i < pixels.length; i++){
 			pixels[i] = render.pixels[i];

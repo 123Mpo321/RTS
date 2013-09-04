@@ -4,6 +4,7 @@ import com.engine.game.Base;
 import com.engine.level.Level;
 import com.engine.game.menu.Menu;
 import com.engine.tile.Tile;
+import com.engine.units.Unit;
 
 public class Render{
 	
@@ -41,6 +42,19 @@ public class Render{
 				renderTile(x, y, level.tiles[x + y * MAP_WIDTH]);
 			}
 		}
+	}
+	
+	public void renderUnit(Unit u){
+		
+		for(int y = 0; y < u.sprite.SIZE; y++){
+			int ya = y + (int) u.y - yOffset;
+			for(int x = 0; x < u.sprite.SIZE; x++){
+				int xa = x + (int) u.x - xOffset;
+				if(xa < 0 || xa >= width || ya < 0 || ya >= height) continue;
+				pixels[xa + ya * width] = u.sprite.pixels[x + y * u.sprite.SIZE];
+			}
+		}
+		
 	}
 	
 	public void render(Menu menu){

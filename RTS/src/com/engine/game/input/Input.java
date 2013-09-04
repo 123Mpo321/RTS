@@ -14,7 +14,8 @@ public class Input extends TimerTask implements KeyListener, MouseListener, Mous
 	private int mapMovementSpeed = 4;
 	private boolean keyMapMove = false;
 	private boolean mouseMapMove = false;
-	private int x, y;
+	public static boolean mouse = false;
+	public static int x, y;
 	
 	public void run(){
 		update();
@@ -86,7 +87,8 @@ public class Input extends TimerTask implements KeyListener, MouseListener, Mous
 	/*************Mouse Listeners***************/
 	
 	public void mouseDragged(MouseEvent e){
-		
+		x = e.getX();
+		y = e.getY();
 	}
 	
 	public void mouseMoved(MouseEvent e){
@@ -107,11 +109,11 @@ public class Input extends TimerTask implements KeyListener, MouseListener, Mous
 	}
 	
 	public void mousePressed(MouseEvent e){
-		
+		mouse = true;
 	}
 	
 	public void mouseReleased(MouseEvent e){
-		
+		mouse = false;
 	}
 	
 }
